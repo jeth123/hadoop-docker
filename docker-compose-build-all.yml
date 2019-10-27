@@ -6,7 +6,7 @@ services:
 
   os7-jvm:
     build: ./services/os-jvm-docker/centos7-openjdk8
-    image: twinsen/os7-jvm:centos7-openjdk8
+    image: twinsen/os-jvm:centos7-openjdk8
 
   hadoop:
     build: ./services/hadoop-docker/2.7.2
