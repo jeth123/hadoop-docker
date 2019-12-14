@@ -1,7 +1,7 @@
 version: '2'
 services:
   hbase-slave1:
-    image: twinsen/hbase:1.2.5
+    image: leidj/sqoop:1.0.0
     container_name: hbase-slave1
     volumes:
       - "./volume/hadoop/work/slave1:/works"
@@ -17,7 +17,7 @@ services:
     tty: true
   
   hbase-slave2:
-    image: twinsen/hbase:1.2.5
+    image: leidj/sqoop:1.0.0
     container_name: hbase-slave2
     volumes:
       - "./volume/hadoop/work/slave2:/works"
@@ -33,7 +33,7 @@ services:
     tty: true
 
   hbase-slave3:
-    image: twinsen/hbase:1.2.5
+    image: leidj/sqoop:1.0.0
     container_name: hbase-slave3
     volumes:
       - "./volume/hadoop/work/slave3:/works"
@@ -50,7 +50,7 @@ services:
 
 
   hbase-master:
-    image: twinsen/hbase:1.2.5
+    image: leidj/sqoop:1.0.0
     container_name: hbase-master
     ports:
       - "50070:50070"
