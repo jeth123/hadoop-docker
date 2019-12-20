@@ -58,6 +58,7 @@ services:
       - "8080:8080"
       - "8042:8042"
       - "16010:16010"
+      - "9090:9090"
     volumes:
       - "./volume/hadoop/work/master:/works"
       - "./volume/hadoop/logs/master:/root/hadoop/logs/"
