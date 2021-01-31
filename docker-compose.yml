@@ -1,7 +1,7 @@
 version: '2'
 services:
   hbase-slave1:
-    image: leidj/sqoop:1.0.2
+    image: jeth123/zk:1.0
     container_name: hbase-slave1
     volumes:
       - "./volume/hadoop/work/slave1:/works"
@@ -9,15 +9,16 @@ services:
       - "./volume/spark/logs/slave1:/root/spark/logs/"
       - "./volume/hbase/slave1:/hworks/"
       - "./volume/hbase/logs/slave1:/root/hbase/logs/"
+      - "./volume/zk/hbase-slave1:/works"
     hostname: hbase-slave1.hadoop-docker
     networks:
       hadoop-docker:
-        aliases: 
+        aliases:
           - hbase-slave1
     tty: true
-  
+
   hbase-slave2:
-    image: leidj/sqoop:1.0.2
+    image: jeth123/zk:1.0
     container_name: hbase-slave2
     volumes:
       - "./volume/hadoop/work/slave2:/works"
@@ -25,15 +26,16 @@ services:
       - "./volume/spark/logs/slave2:/root/spark/logs/"
       - "./volume/hbase/slave2:/hworks/"
       - "./volume/hbase/logs/slave2:/root/hbase/logs/"
+      - "./volume/zk/hbase-slave2:/works"
     hostname: hbase-slave2.hadoop-docker
     networks:
       hadoop-docker:
-        aliases: 
+        aliases:
           - hbase-slave2
     tty: true
 
   hbase-slave3:
-    image: leidj/sqoop:1.0.2
+    image: jeth123/zk:1.0
     container_name: hbase-slave3
     volumes:
       - "./volume/hadoop/work/slave3:/works"
@@ -44,13 +46,13 @@ services:
     hostname: hbase-slave3.hadoop-docker
     networks:
       hadoop-docker:
-        aliases: 
+        aliases:
           - hbase-slave3
     tty: true
 
 
   hbase-master:
-    image: leidj/sqoop:1.0.2
+    image: jeth123/zk:1.0
     container_name: hbase-master
     ports:
       - "50070:50070"
@@ -66,10 +68,11 @@ services:
       - "./volume/hbase/master:/hworks/"
       - "./volume/hbase/logs/master:/root/hbase/logs/"
       - "./volume/code:/code"
+      - "./volume/zk/hbase-master:/works"
     hostname: hbase-master.hadoop-docker
     networks:
       hadoop-docker:
-        aliases: 
+        aliases:
           - hbase-master
     tty: true
 
@@ -83,42 +86,6 @@ services:
       - hadoop-docker
     environment:
       - MYSQL_ROOT_PASSWORD=hadoop
-    tty: true
-  
-  zoo1:
-    image: twinsen/zookeeper:3.4.10
-    volumes:
-      - "./volume/zk/zoo1:/works"
-    container_name: zoo1
-    hostname: zoo1
-    networks:
-      hadoop-docker:
-        aliases: 
-          - zoo1
-    tty: true
-
-  zoo2:
-    image: twinsen/zookeeper:3.4.10
-    volumes:
-      - "./volume/zk/zoo2:/works"
-    container_name: zoo2
-    hostname: zoo2
-    networks:
-      hadoop-docker:
-        aliases: 
-          - zoo2
-    tty: true
-    
-  zoo3:
-    image: twinsen/zookeeper:3.4.10
-    volumes:
-      - "./volume/zk/zoo3:/works"
-    container_name: zoo3
-    hostname: zoo3
-    networks:
-      hadoop-docker:
-        aliases: 
-          - zoo3
     tty: true
 
 networks:
