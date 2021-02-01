@@ -9,7 +9,7 @@ services:
       - "./volume/spark/logs/slave1:/root/spark/logs/"
       - "./volume/hbase/slave1:/hworks/"
       - "./volume/hbase/logs/slave1:/root/hbase/logs/"
-      - "./volume/zk/hbase-slave1:/works"
+      - "./volume/zk/zoo2:/works"
     hostname: hbase-slave1.hadoop-docker
     networks:
       hadoop-docker:
@@ -26,7 +26,7 @@ services:
       - "./volume/spark/logs/slave2:/root/spark/logs/"
       - "./volume/hbase/slave2:/hworks/"
       - "./volume/hbase/logs/slave2:/root/hbase/logs/"
-      - "./volume/zk/hbase-slave2:/works"
+      - "./volume/zk/zoo3:/works"
     hostname: hbase-slave2.hadoop-docker
     networks:
       hadoop-docker:
@@ -68,7 +68,7 @@ services:
       - "./volume/hbase/master:/hworks/"
       - "./volume/hbase/logs/master:/root/hbase/logs/"
       - "./volume/code:/code"
-      - "./volume/zk/hbase-master:/works"
+      - "./volume/zk/zoo1:/works"
     hostname: hbase-master.hadoop-docker
     networks:
       hadoop-docker:
