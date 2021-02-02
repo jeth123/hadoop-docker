@@ -82,6 +82,8 @@ services:
     volumes:
       - "./volume/mysql:/var/lib/mysql"
     container_name: mysql
+    ports:
+      - "3306:3306"
     hostname: mysql
     networks:
       - hadoop-docker
