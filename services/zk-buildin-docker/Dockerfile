@@ -23,4 +23,7 @@ EXPOSE 2181
 # 拷贝zookeeper配置文件
 ADD config/zoo.cfg $ZOOKEEPER_HOME/conf/
 
+# 拷贝HBase配置文件
+ADD config/hbase/* /root/hbase/conf/
+
 CMD ["sh", "-c", "service sshd start; $ZOOKEEPER_HOME/bin/zkServer.sh start; bash"]
