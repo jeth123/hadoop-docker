@@ -26,7 +26,7 @@ services:
       - "./volume/spark/logs/slave2:/root/spark/logs/"
       - "./volume/hbase/slave2:/hworks/"
       - "./volume/hbase/logs/slave2:/root/hbase/logs/"
-      - "./volume/zk/zoo3:/works"
+      - "./volume/zk/zoo3:/zkworks"
     hostname: hbase-slave2.hadoop-docker
     networks:
       hadoop-docker:
