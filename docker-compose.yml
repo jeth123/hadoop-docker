@@ -1,7 +1,7 @@
 version: '2'
 services:
   hbase-slave1:
-    image: jeth123/zk:1.0
+    image: jeth123/zk:1.0.1
     container_name: hbase-slave1
     volumes:
       - "./volume/hadoop/work/slave1:/works"
@@ -9,7 +9,7 @@ services:
       - "./volume/spark/logs/slave1:/root/spark/logs/"
       - "./volume/hbase/slave1:/hworks/"
       - "./volume/hbase/logs/slave1:/root/hbase/logs/"
-      - "./volume/zk/zoo2:/works"
+      - "./volume/zk/zoo2:/zkworks"
     hostname: hbase-slave1.hadoop-docker
     networks:
       hadoop-docker:
@@ -18,7 +18,7 @@ services:
     tty: true
 
   hbase-slave2:
-    image: jeth123/zk:1.0
+    image: jeth123/zk:1.0.1
     container_name: hbase-slave2
     volumes:
       - "./volume/hadoop/work/slave2:/works"
@@ -35,7 +35,7 @@ services:
     tty: true
 
   hbase-slave3:
-    image: jeth123/zk:1.0
+    image: jeth123/zk:1.0.1
     container_name: hbase-slave3
     volumes:
       - "./volume/hadoop/work/slave3:/works"
@@ -52,7 +52,7 @@ services:
 
 
   hbase-master:
-    image: jeth123/zk:1.0
+    image: jeth123/zk:1.0.1
     container_name: hbase-master
     ports:
       - "50070:50070"
@@ -61,6 +61,7 @@ services:
       - "8042:8042"
       - "16010:16010"
       - "9090:9090"
+      - "2181:2181"
     volumes:
       - "./volume/hadoop/work/master:/works"
       - "./volume/hadoop/logs/master:/root/hadoop/logs/"
@@ -68,7 +69,7 @@ services:
       - "./volume/hbase/master:/hworks/"
       - "./volume/hbase/logs/master:/root/hbase/logs/"
       - "./volume/code:/code"
-      - "./volume/zk/zoo1:/works"
+      - "./volume/zk/zoo1:/zkworks"
     hostname: hbase-master.hadoop-docker
     networks:
       hadoop-docker:
